@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "a92d89cd-2d77-411e-9fd1-9ddf26a56f67",
+		"name": "Platform_Loanmanagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18394095",
+		"_collection_link": "https://grey-flare-348785.postman.co/workspace/Loan-Project~fd372f4b-0af6-4ec3-b522-73a0225c0aca/collection/18394095-a92d89cd-2d77-411e-9fd1-9ddf26a56f67?action=share&creator=18394095&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "SalaryBasedLoan",
+			"item": [
+				{
+					"name": "WorkidUpdate",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the message is updated\", function() {\r",
+									"    pm.expect(jsonData.message).to.eql(\"updated\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"workIdApproved\": true,\r\n  \"cif\": \"R007250701\",\r\n  \"rejectionMessage\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{WorkidUpdate}}api/CreateLoanAccount/WorkIdUpdate",
+							"host": [
+								"{{WorkidUpdate}}api"
+							],
+							"path": [
+								"CreateLoanAccount",
+								"WorkIdUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessPendingWorkids",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json(); \r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the message is updated\", function() {\r",
+									"    pm.expect(jsonData.message).to.eql(\"updated\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"workIdApproved\": true,\r\n  \"cif\": \"R007250701\",\r\n  \"rejectionMessage\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{WorkidUpdate}}api/CreateLoanAccount/WorkIdUpdate",
+							"host": [
+								"{{WorkidUpdate}}api"
+							],
+							"path": [
+								"CreateLoanAccount",
+								"WorkIdUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessQueuedCreateLoanAccount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{WorkidUpdate}}api/CreateLoanAccount/ProcessQueuedCreateLoanAccount",
+							"host": [
+								"{{WorkidUpdate}}api"
+							],
+							"path": [
+								"CreateLoanAccount",
+								"ProcessQueuedCreateLoanAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessQueuedDisburseLoan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{WorkidUpdate}}api/CreateLoanAccount/ProcessQueuedDisburseLoan",
+							"host": [
+								"{{WorkidUpdate}}api"
+							],
+							"path": [
+								"CreateLoanAccount",
+								"ProcessQueuedDisburseLoan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Device Loan and PayDay Loan",
+			"item": [
+				{
+					"name": "ProcessQueuedCreateLoanAccount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{WorkidUpdate}}api/CreateLoanAccount/ProcessQueuedCreateLoanAccount",
+							"host": [
+								"{{WorkidUpdate}}api"
+							],
+							"path": [
+								"CreateLoanAccount",
+								"ProcessQueuedCreateLoanAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProcessQueuedDisburseLoan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{WorkidUpdate}}api/CreateLoanAccount/ProcessQueuedDisburseLoan",
+							"host": [
+								"{{WorkidUpdate}}api"
+							],
+							"path": [
+								"CreateLoanAccount",
+								"ProcessQueuedDisburseLoan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetLoanRecordByCallBackRequestId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"callBackRequestId\": \"efbc6c02-51cd-421b-b990-aa93fc4f8c97\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{WorkidUpdate}}api/CreateLoanAccount/GetLoanRecordByCallBackRequestId",
+					"host": [
+						"{{WorkidUpdate}}api"
+					],
+					"path": [
+						"CreateLoanAccount",
+						"GetLoanRecordByCallBackRequestId"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "ZUMBojVqom+osIK2yMVZzFxoj+ZBuu0hL32/LEasdng=",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "WorkidUpdate",
+			"value": "http://20.54.227.23/loanmanagement/"
+		}
+	]
+}

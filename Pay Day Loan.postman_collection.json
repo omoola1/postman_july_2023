@@ -1,0 +1,1728 @@
+{
+	"info": {
+		"_postman_id": "5a1a6129-4e7c-458d-a20e-8790e5b4a062",
+		"name": "Pay Day Loan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18394095",
+		"_collection_link": "https://grey-flare-348785.postman.co/workspace/Loan-Project~fd372f4b-0af6-4ec3-b522-73a0225c0aca/collection/18394095-5a1a6129-4e7c-458d-a20e-8790e5b4a062?action=share&creator=18394095&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "omoola",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is omoolapalace@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"omoolapalace@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"omoolapalace@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0250053386\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08061678207\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shalom",
+			"item": [
+				{
+					"name": "login for payday shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is shalomwill98@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"shalomwill98@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"shalomwill98@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0252851380\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08039274574\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nelson",
+			"item": [
+				{
+					"name": "login for payday nelson",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is nelsonakinro2@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"nelsonakinro2@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"nelsonakinro2@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0252870167\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08039274574\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nasiru",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is talk2danjumanas@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"talk2danjumanas@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"talk2danjumanas@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0268444738\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08149746048\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edna",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is evytrell3@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"evytrell3@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"evytrell3@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0270925926\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08169668333\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Opeyemi",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is alukoopeyemi77@yahoo.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"alukoopeyemi77@yahoo.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"alukoopeyemi77@yahoo.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1#\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0235524546\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08182147656\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clif",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is klifiam@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"klifiam@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"klifiam@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"1234567Ce.\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0252909016\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08166249470\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "David",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is koleosho.david2017@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"Koleosho.david2017@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"koleosho.david2017@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password12345@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0242563385\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08062825630\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Timothy",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is olukotuntimothy72@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"olukotuntimothy72@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"olukotuntimothy72@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Roseline@0072\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0252283617\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"07017102685\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Muhammed",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is muhammedbello1005@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"muhammedbello1005@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"muhammedbello1005@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Dev@1000000\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0252898442\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08064054305\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Kingson",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is kingsonejikeme@yahoo.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"kingsonejikeme@yahoo.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"kingsonejikeme@yahoo.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"KingsonTheMan123\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0238697210\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08038396002\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mahfooz",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is mahfoozabubakar@rocketmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"mahfoozabubakar@rocketmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"mahfoozabubakar@rocketmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"testPass@123\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0269296721\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"08134781294\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Oluwatomi",
+			"item": [
+				{
+					"name": "login for payday",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is oluwatomishittu@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"oluwatomishittu@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"verify that the bvn is\", function() {\r",
+									"//     pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+									"//    pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"oluwatomishittu@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Onboarding/Login",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Onboarding",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PaydayLoan/CreateLoanWithPreQualifiedAmount shalom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify response message \", function() {\r",
+									"    pm.expect(jsonData.data.message).to.eql(\"We are processing your request\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAmount\": 5000,\r\n  \"accountNumber\": \"0270356311\",\r\n  \"bankName\": \"wema\",\r\n  \"bankListId\": \"034\",\r\n  \"phoneNumber\": \"07068118477\",\r\n  \"useRemitaDataReference\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/CreateLoanWithPreQualifiedAmount",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"CreateLoanWithPreQualifiedAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "paydayurl",
+			"value": "http://20.54.227.23/alatchannel",
+			"type": "string"
+		}
+	]
+}

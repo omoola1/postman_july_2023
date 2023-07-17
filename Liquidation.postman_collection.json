@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "8c7b6f1e-bc61-4123-8db9-4c1d834416e1",
+		"name": "Liquidation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18394095",
+		"_collection_link": "https://grey-flare-348785.postman.co/workspace/Loan-Project~fd372f4b-0af6-4ec3-b522-73a0225c0aca/collection/18394095-8c7b6f1e-bc61-4123-8db9-4c1d834416e1?action=share&creator=18394095&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Liquidation",
+			"item": [
+				{
+					"name": "liquidate pay day omoola",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let jsonData = pm.response.json();\r",
+									"console.log(jsonData.entries);\r",
+									"\r",
+									"pm.test(\"verify the email address is talk2danjumanas@gmail.com\", function() {\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"talk2danjumanas@gmail.com\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "alat-token",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"loanAccount\": \"124009576\",\r\n  \"debitAccount\": \"0250053386\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{paydayurl}}/api/Loan/PaydayLoan/LiquidateLoan",
+							"host": [
+								"{{paydayurl}}"
+							],
+							"path": [
+								"api",
+								"Loan",
+								"PaydayLoan",
+								"LiquidateLoan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

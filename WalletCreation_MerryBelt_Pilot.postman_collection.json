@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "86a8f6e8-4086-46ce-97a9-d18c6eed98f7",
+		"name": "WalletCreation_MerryBelt_Pilot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18394095",
+		"_collection_link": "https://grey-flare-348785.postman.co/workspace/Loan-Project~fd372f4b-0af6-4ec3-b522-73a0225c0aca/collection/18394095-86a8f6e8-4086-46ce-97a9-d18c6eed98f7?action=share&creator=18394095&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Create_Superagent_Wallet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json(); \r",
+							"console.log(jsonData.entries);\r",
+							"\r",
+							"pm.test(\"verify the superagentwallet account create\", function() {\r",
+							"    pm.expect(jsonData.description).to.eql(\"Wallet Created\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "1bf3b56a-8462-46b1-8462-eed3da9ad280",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"phoneNumber\": \"08061678207\",\r\n  \"name\": \"Mumin Olabiyi\",\r\n  \"email\": \"omoolaplace@gmail.com\",\r\n  \"walletType\": 1,\r\n  \"accountNumber\": \"0250053386\",\r\n  \"pin\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Wallet}}CreateSuperAgentwallet",
+					"host": [
+						"{{Wallet}}CreateSuperAgentwallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_SubAgent_Wallet_Pilot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json(); \r",
+							"console.log(jsonData.entries);\r",
+							"\r",
+							"pm.test(\"verify the subwallet account create\", function() {\r",
+							"    pm.expect(jsonData.description).to.eql(\"Wallet Created\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"phoneNumber\": \"08061678207\",\r\n  \"name\": \"mumin francisca\",\r\n  \"email\": \"omoolapalace@gmail.com\",\r\n  \"accountNumber\": \"0250053386\",\r\n  \"principalAgentWalletNo\": \"0267498095\",\r\n  \"walletType\": 3,\r\n  \"pin\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Wallet}}CreateSubAgentWallet",
+					"host": [
+						"{{Wallet}}CreateSubAgentWallet"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "WALLET",
+			"value": "http://172.27.4.17/AlatWallet_Pilot_MerryBet/api/v2/wallets/"
+		},
+		{
+			"key": "Wallet",
+			"value": "http://172.27.4.17/AlatWallet_Pilot_MerryBet/api/v2/wallets/",
+			"disabled": true
+		}
+	]
+}

@@ -1,0 +1,993 @@
+{
+	"info": {
+		"_postman_id": "7c55c0f4-a2da-4748-9c0d-d0cbe0bbfbc7",
+		"name": "ALATCHANNEL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18394095",
+		"_collection_link": "https://grey-flare-348785.postman.co/workspace/Loan-Project~fd372f4b-0af6-4ec3-b522-73a0225c0aca/collection/18394095-7c55c0f4-a2da-4748-9c0d-d0cbe0bbfbc7?action=share&creator=18394095&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Onboarding_Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"console.log(jsonData.entries);\r",
+							"\r",
+							"pm.test(\"verify the email address is omoolapalace@gmail.com\", function() {\r",
+							"    pm.expect(jsonData.data.email).to.eql(\"omoolapalace@gmail.com\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verify that the bvn is\", function() {\r",
+							"    pm.expect(jsonData.data.bvn).to.eql(\"22290482663\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verify that the account name is Micheal Adinebo\", function() {\r",
+							"   pm.expect(jsonData.data.accounts[0].accountName).to.eql(\"Mumin Olabiyi\");\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"authToken\", (jsonData.data.token));\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"ababatunde70@gmail.com\",\r\n  \"channel\": 1,\r\n  \"device\": {\r\n    \"imei\": \"string\",\r\n    \"code\": \"string\",\r\n    \"name\": \"string\",\r\n    \"isActiveDevice\": true,\r\n    \"os\": \"string\",\r\n    \"biometricToken\": \"string\",\r\n    \"biometricCode\": \"string\"\r\n  },\r\n  \"password\": \"Password1@\",\r\n  \"geoLatitude\": \"string\",\r\n  \"geoLongitude\": \"string\",\r\n  \"geoTimeStamp\": \"2022-03-14T10:34:50.111Z\",\r\n  \"appVersion\": \"4.1.7\",\r\n  \"hashHex\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ONBOARDING}}/alatchannel/api/Onboarding/Login",
+					"host": [
+						"{{ONBOARDING}}"
+					],
+					"path": [
+						"alatchannel",
+						"api",
+						"Onboarding",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetListofActiveBAnk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/GetBankStatementActiveBanks",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"GetBankStatementActiveBanks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loan Dash Board/Loan History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/Dashboard",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"Dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SalaryBase_Get_Loan_Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/GetLoanData",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"GetLoanData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PayDayLoanDetails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/PayDayLoan/GetLoanData",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"PayDayLoan",
+						"GetLoanData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeviceLoan GetBank And Vendor List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/DeviceLoan/GetBankAndVendorList",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"DeviceLoan",
+						"GetBankAndVendorList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Statement with Feed Back",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountNumber\": \"6009283367\",\r\n  \"bankId\": 4,\r\n  \"phoneNumber\": \"08061678207\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ONBOARDING}}/api/Loan/SalaryBased/RequestStatementWithFeedback",
+					"host": [
+						"{{ONBOARDING}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"RequestStatementWithFeedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SalaryBaseLoan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"loanTenure\": 12,\r\n  \"loanAmount\": 45000,\r\n  \"loanRate\": 27,\r\n  \"isWemaBank\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/RequestLoan",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"RequestLoan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaydayLoan_Get_PreQualified_Amount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/PaydayLoan/GetPreQualifiedAmount",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"PaydayLoan",
+						"GetPreQualifiedAmount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PayDayLoan_Get_Loan_Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/PayDayLoan/GetLoanData",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"PayDayLoan",
+						"GetLoanData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loan_Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/Dashboard",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"Dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GoalBased_Get_Loan_Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"requestNewLoan\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/GoalBased/GetLoanData",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"GoalBased",
+						"GetLoanData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SalaryBased_Reject_Loan",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/RejectLoan",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"RejectLoan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pending_Application_DataV2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/PendingApplicationDataV2",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"PendingApplicationDataV2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaydayLoan_GetPreQualifiedAmount",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/PaydayLoan/GetPreQualifiedAmount",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"PaydayLoan",
+						"GetPreQualifiedAmount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SalaryBased_RequestLoan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"loanTenure\": 25,\r\n  \"loanAmount\": 6500,\r\n  \"loanRate\": 25,\r\n  \"isWemaBank\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/RequestLoan",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"RequestLoan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GoalBased_RequestLoan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"creditAccount\": \"0241210950\",\r\n  \"loanAmount\": 20000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/GoalBased/RequestLoan",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"GoalBased",
+						"RequestLoan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SalaryTopUp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"console.log(jsonData.entries);\r",
+							"\r",
+							"pm.test(\"verify the tenor message\", function() {\r",
+							"    pm.expect(jsonData.data).to.eql(\"We are processing your request\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"loanAmount\": 50000,\r\n  \"loanTenor\": 11,\r\n  \"pin\": \"1234\",\r\n  \"eligibilityCheckId\": \"ef7b254f-fe82-4cfb-0c49-08db03093a3b\",\r\n  \"creditAccount\": \"0250053386\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/Topup",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"Topup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SalaryTopUp_Exceed month",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"console.log(jsonData.entries);\r",
+							"\r",
+							"pm.test(\"verify the tenor message\", function() {\r",
+							"    pm.expect(jsonData.message).to.eql(\"Loan Eligibility failed! Loan tenor [13] months is more than the maximum salary loan product tenor [12]\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "alat-token",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"loanAmount\": 10000,\r\n  \"loanTenor\": 11,\r\n  \"pin\": \"1234\",\r\n  \"eligibilityCheckId\": \"ef7b254f-fe82-4cfb-0c49-08db03093a3b\",\r\n  \"creditAccount\": \"0250053386\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SalaryBasedLoan}}/api/Loan/SalaryBased/Topup",
+					"host": [
+						"{{SalaryBasedLoan}}"
+					],
+					"path": [
+						"api",
+						"Loan",
+						"SalaryBased",
+						"Topup"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "alatURL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "SalaryBasedLoan",
+			"value": "http://20.54.227.23/alatchannel"
+		}
+	]
+}
